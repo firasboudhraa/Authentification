@@ -11,3 +11,12 @@ Content-Type: application/json
    "adress": "manouba rue syrie"
 }
 
+###
+POST http://127.0.0.1:3000/user/sign-in-user HTTP/1.1
+Content-Type: application/json
+
+{
+   "email": "fboudhraa2@gmail.com",
+   "password": "firas20101995"
+}
+

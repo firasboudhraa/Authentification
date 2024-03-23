@@ -12,3 +12,21 @@ exports.signUp = async (req , res) => {
     return sendSuccessfulCreation(res);
 };
 
+exports.signIn = async (req, res) => {
+  const { email, password } = req.body;
+
+
+      const user = await UserModel.findOne({ email });
+
+      if (!user) {
+          return res.status(401).json({ success: false, message: 'Adresse e-mail ou mot de passe incorrect' });
+      }
+
+      if (user.password !== password) {
+          return res.status(401).json({ success: false, message: 'Adresse e-mail ou mot de passe incorrect' });
+      }
+
+      return res.status(200).json({ success: true, message: 'Connexion réussie' });
+
+};
+
