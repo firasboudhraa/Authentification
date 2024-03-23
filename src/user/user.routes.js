@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.post("/sign-up-user", errorWrapper(userController.signUp));
 router.post("/sign-in-user", errorWrapper(userController.signIn));
+router.post("/update-user", errorWrapper(userController.updateOne));
 
 
 module.exports = router;

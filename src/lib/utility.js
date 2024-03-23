@@ -14,8 +14,8 @@ const sendSuccessResponse = (res, codeStatus = 200, data = []) => {
     sendSuccessResponse(res, 204);
   };
   
-  const sendSuccessfulUpdate = (res) => {
-    sendSuccessResponse(res);
+  const sendSuccessfulUpdate = (res,data) => {
+    sendSuccessResponse(res,201,data);
   };
   
   const sendSuccessfulRead = (res,data) => {
