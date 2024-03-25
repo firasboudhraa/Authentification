@@ -1,9 +1,11 @@
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZpcmFzLmJvdWRocmFhQGdtYWlsLmNvbSIsImlhdCI6MTcxMTM3NTcwNSwiZXhwIjoxNzExMzc3Mzg1fQ.gAYZHYurh-CZZgtFG99lN5zlcoClG4_O2HvWD_Ab-LQ
+
 ###
 POST http://127.0.0.1:3000/user/sign-up-user HTTP/1.1
 Content-Type: application/json
 
 {
-   "email": "fboudhraa2@gmail.com",
+   "email": "firas.boudhraa@gmail.com",
    "userName": "firas",
    "password": "firas20101995",
    "Age": 28,
@@ -23,11 +25,12 @@ Content-Type: application/json
 ###
 POST http://127.0.0.1:3000/user/update-user HTTP/1.1
 Content-Type: application/json
+Authorization: bearer {{token}}
 
 {
-   "email": "fboudhraa2@gmail.com",
+   "email": "firas.boudhraa@gmail.com",
    "userName": "firas",
-   "password": "firas20101995",
+   "password": "firas20101995sabeh",
    "Age": 28,
    "tel": 28107403,
    "adress": "manouba rue syrie"

@@ -5,6 +5,7 @@ const userSchema = new Schema(
     {
         email:{
             type: String,
+            
         },
         userName: {
             type: String,
