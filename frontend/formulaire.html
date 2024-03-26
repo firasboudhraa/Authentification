@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="./formulaire.css">
+    <script src="./formulaire.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <h1 class="form-title">Inscription :</h1>
+            <form id="signupForm" class="form">
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" class="form-input" required>
+
+                <label for="userName">User Name :</label>
+                <input type="text" id="userName" name="userName" class="form-input" required>
+
+                <label for="password">Password :</label>
+                <input type="password" id="password" name="password" class="form-input" required>
+
+                <label for="age">Age :</label>
+                <input type="number" id="age" name="age" class="form-input" required>
+
+                <label for="tel">Tel :</label>
+                <input type="tel" id="tel" name="tel" class="form-input" required>
+
+                <label for="adress">Address :</label>
+                <textarea name="adress" id="adress" cols="30" rows="5" class="form-input"></textarea>
+
+                <button type="submit" class="btn">Register</button>
+                <p id="signupMessage" class="hidden">Inscription réussie !</p>
+            </form>
+        </div>
+
+        <div class="form">
+            <h1 class="form-title">Connexion :</h1>
+            <form id="signinForm" class="form">
+                <label for="loginEmail">Email :</label>
+                <input type="email" id="loginEmail" name="loginEmail" class="form-input" required>
+        
+                <label for="loginPassword">Password :</label>
+                <input type="password" id="loginPassword" name="loginPassword" class="form-input" required>
+        
+                <button type="submit" class="btn">Connexion</button>
+                <p id="signinMessage" class="hidden">Connexion réussie !</p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
