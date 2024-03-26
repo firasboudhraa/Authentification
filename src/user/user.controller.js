@@ -30,21 +30,20 @@ exports.signIn = async (req, res) => {
   return res.status(200).json({ success: true, message: "Connexion réussie" });
 };
 
-/*exports.updateOne = async (req, res) => {
-  const user = await UserModel.findOne({ email: req.body.email });
-  if (!user) throw new Error("NOT_FOUND");
-  await UserModel.updateOne({ email: req.body.email }, req.body);
-  return sendSuccessfulUpdate(res, user);
-};*/
+
 
 exports.updateOne = async (req, res) => {
-  if (req.user.email !== req.body.email) {
+ 
+  
+  if (req.user.email !==req.body.email) {
     throw new Error("Unauthorized: You are not allowed to update this profile");
   }
+    const updatedUser = await UserModel.updateOne(
+      { email: req.body.email},
+      req.body,
+      { new: true }
+    );
 
-  await UserModel.updateOne({ email: userEmailToUpdate }, req.body, {
-    new: true,
-  });
+    return sendSuccessfulUpdate(res, updatedUser);
 
-  return sendSuccessfulUpdate(res, updatedUser);
 };
