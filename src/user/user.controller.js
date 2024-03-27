@@ -59,4 +59,50 @@ exports.updateOne = async (req, res) => {
   return sendSuccessfulUpdate(res, updatedUser);
 };
 
+exports.forgotPass = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+      const user = await UserModel.findOne({ email });
+
+      if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+      }
+
+      return res.status(200).json({ message: 'Password reset email sent successfully' });
+  } catch (error) {
+      console.error('Error:', error);
+      return res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+exports.resetPass = async (req, res) => {
+  const { loginEmail, newPassword } = req.body;
+
+  try {
+    console.log('Updating password for email:', loginEmail);
+    console.log('New password:', newPassword);
+
+    const updatedUser = await UserModel.updateOne(
+      { email: loginEmail },
+      { password: newPassword },
+      { new: true } // To return the updated user
+    );
+
+    if (!updatedUser) {
+      console.log('User not found or password not updated.');
+      return res.status(404).json({ message: 'User not found or password not updated.' });
+    }
+
+    console.log('Password reset successful.');
+    return res.status(200).json({ message: 'Password reset successful.' });
+  } catch (error) {
+    console.error('Error:', error);
+    return res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+
+
+
 

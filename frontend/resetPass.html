@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Reset</title>
+    <link rel="stylesheet" href="./resetPass.css">
+    <script src="./resetPass.js" defer ></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="reset-title">Password Reset</h1>
+        <form id="resetForm" class="reset-form">
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" name="newPassword" class="reset-input" required>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" class="reset-input" required>
+
+            <button type="submit" class="reset-btn">Reset Password</button>
+            <p id="resetMessage" class="hidden">Password reset successful!</p>
+            <p id="errorMessage" class="hidden">Error: Failed to reset password.</p>
+        </form>
+    </div>
+
+</body>
+</html>
