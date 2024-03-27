@@ -54,6 +54,10 @@
     color: green; 
 }
 
-#error-message {
+#error-message-connexion {
+    color: red; 
+}
+
+#error-message-inscription {
     color: red; 
 }
