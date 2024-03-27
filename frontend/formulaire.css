@@ -44,5 +44,16 @@
 
 .hidden {
     display: none;
-    color: #4CAF50;
+}
+
+#signinMessage {
+    color: green; 
+}
+
+#signupMessage {
+    color: green; 
+}
+
+#error-message {
+    color: red; 
 }

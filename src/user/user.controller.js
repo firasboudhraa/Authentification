@@ -7,6 +7,7 @@ const {
 
 const UserModel = require("./user.model");
 const jwt = require("../lib/jwt");
+const nodemailer = require("nodemailer");
 
 exports.signUp = async (req, res) => {
   const { email, userName, password, age, tel, adress } = req.body;
@@ -57,3 +58,5 @@ exports.updateOne = async (req, res) => {
 
   return sendSuccessfulUpdate(res, updatedUser);
 };
+
+

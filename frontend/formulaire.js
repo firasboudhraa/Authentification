@@ -43,9 +43,12 @@ document.getElementById('signinForm').addEventListener('submit', async (event) =
             document.getElementById('signinMessage').classList.remove('hidden');
         } else {
             console.error('Error:', response.statusText);
+            document.getElementById('error-message').classList.remove('hidden');
         }
     } catch (error) {
         console.error('Error:', error);
     }
 });
+
+
 
