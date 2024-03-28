@@ -20,4 +20,5 @@ router.post(
 router.post("/forgot-pass-user", errorWrapper(userController.forgotPass));
 router.post('/reset-pass-user',errorWrapper(userController.resetPass));
 
+
 module.exports = router;

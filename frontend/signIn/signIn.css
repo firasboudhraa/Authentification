@@ -50,14 +50,7 @@
     color: green; 
 }
 
-#signupMessage {
-    color: green; 
-}
 
 #error-message-connexion {
-    color: red; 
-}
-
-#error-message-inscription {
     color: red; 
 }

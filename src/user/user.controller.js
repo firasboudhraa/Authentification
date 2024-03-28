@@ -59,7 +59,7 @@ exports.updateOne = async (req, res) => {
   return sendSuccessfulUpdate(res, updatedUser);
 };
 
-exports.forgotPass = async (req, res) => {
+/*exports.forgotPass = async (req, res) => {
   const { email } = req.body;
 
   try {
@@ -74,7 +74,51 @@ exports.forgotPass = async (req, res) => {
       console.error('Error:', error);
       return res.status(500).json({ message: 'Internal Server Error' });
   }
+};*/
+
+exports.forgotPass = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await UserModel.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: 'Outlook',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    });
+
+    const resetLink = 'http://127.0.0.1:3000/resetPass/resetPass.html';
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: email, 
+      subject: 'Password Reset',
+      html: `Click the following link to reset your password: <a href="${resetLink}">${resetLink}</a>`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending password reset email:', error);
+        return res.status(500).json({ message: 'Failed to send password reset email' });
+      } else {
+        console.log('Password reset email sent successfully:', info.response);
+        return res.status(200).json({ message: 'Password reset email sent successfully' });
+      }
+    });
+  } catch (error) {
+    console.error('Error:', error);
+    return res.status(500).json({ message: 'Internal Server Error' });
+  }
 };
+
+
 
 exports.resetPass = async (req, res) => {
   const { loginEmail, newPassword } = req.body;
@@ -86,7 +130,7 @@ exports.resetPass = async (req, res) => {
     const updatedUser = await UserModel.updateOne(
       { email: loginEmail },
       { password: newPassword },
-      { new: true } // To return the updated user
+      { new: true } 
     );
 
     if (!updatedUser) {
@@ -101,8 +145,3 @@ exports.resetPass = async (req, res) => {
     return res.status(500).json({ message: 'Internal Server Error' });
   }
 };
-
-
-
-
-
