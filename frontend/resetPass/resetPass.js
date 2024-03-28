@@ -1,3 +1,13 @@
+window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const loginEmail = urlParams.get('loginEmail');
+
+    if (loginEmail) {
+        document.getElementById('loginEmail').value = decodeURIComponent(loginEmail);
+    }
+});
+
+
 document.getElementById('resetForm').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -30,5 +40,14 @@ document.getElementById('resetForm').addEventListener('submit', async (event) =>
         console.error('Error:', error);
         document.getElementById('errorMessage').textContent = 'Error: Failed to reset password.';
         document.getElementById('errorMessage').classList.remove('hidden');
+    }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const loginEmail = urlParams.get('loginEmail');
+
+    if (loginEmail) {
+        document.getElementById('loginEmail').value = decodeURIComponent(loginEmail);
     }
 });

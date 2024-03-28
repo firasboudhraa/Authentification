@@ -36,6 +36,7 @@ document
     event.preventDefault();
 
     const loginEmail = document.getElementById("loginEmail").value;
+    localStorage.setItem('loginEmail', loginEmail);
     try {
       const response = await fetch(
         "http://127.0.0.1:3000/user/forgot-pass-user",
@@ -50,7 +51,6 @@ document
       const data = await response.json();
       console.log(data.message);
       if (response.ok) {
-        localStorage.setItem('loginEmail', loginEmail);
         document.getElementById("signinMessage").textContent =
           "password reset link was sent to the client via email";
         document.getElementById("signinMessage").classList.remove("hidden");
