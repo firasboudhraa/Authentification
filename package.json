@@ -1,11 +1,40 @@
 {
+  "name": "nextjs-project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "concurrently \"node ./server/server.js\" \"next dev -p 5000\" -n \"SERVER, NEXT \" --prefix-colors \"cyan,magenta\"",
+    "prod": "next build && next start",
+    "lint": "next lint"
+  },
   "dependencies": {
-    "auth-db": "^3.2.8",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.14",
+    "axios": "^1.6.8",
+    "bcrypt": "^5.1.1",
+    "colors": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.19.1",
+    "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.2.3",
-    "nodemailer": "^6.9.13"
+    "mongoose": "^8.2.4",
+    "next": "^14.1.4",
+    "nodemailer": "^6.9.13",
+    "react": "^18",
+    "react-dom": "^18",
+    "winston": "^3.13.0",
+    "winston-daily-rotate-file": "^5.0.0",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "concurrently": "^8.2.2",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.4",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3"
   }
 }

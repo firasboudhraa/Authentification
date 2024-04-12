@@ -43,11 +43,3 @@ document.getElementById('resetForm').addEventListener('submit', async (event) =>
     }
 });
 
-window.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const loginEmail = urlParams.get('loginEmail');
-
-    if (loginEmail) {
-        document.getElementById('loginEmail').value = decodeURIComponent(loginEmail);
-    }
-});
