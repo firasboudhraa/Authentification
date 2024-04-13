@@ -9,6 +9,7 @@ export default function SignInForm() {
     handleChangePassword,
     handleChangeEmail,
     handleClickSignIn,
+    handleClickForgetPass,
     loading,
   } = useSignInStore();
 
@@ -35,9 +36,15 @@ export default function SignInForm() {
               <CircularProgress size={24} color="inherit" />
             ) : (
               "Sign In"
-            )}{" "}
+            )}
           </Button>
-          <Button> Register </Button>
+          <Button onClick={handleClickForgetPass} disabled={loading}>
+            {loading ? (
+              <CircularProgress size={24} color="inherit" />
+            ) : (
+              "Forget password"
+            )}
+          </Button>
         </div>
       </div>
     </div>

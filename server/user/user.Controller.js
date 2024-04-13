@@ -43,10 +43,10 @@ exports.signIn = async (req, res) => {
 };
 
 exports.forgotPass = async (req, res) => {
-  const { email } = req.body;
+  const { loginEmail } = req.body;
 
   try {
-    const user = await UserModel.findOne({ email });
+    const user = await UserModel.findOne({ email: loginEmail });
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -60,11 +60,11 @@ exports.forgotPass = async (req, res) => {
       },
     });
 
-    const resetLink = "http://127.0.0.1:3000/resetPass/resetPass.html";
+    const resetLink = "http://localhost:5000/resetPass";
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: email,
+      to: loginEmail,
       subject: "Password Reset",
       html: `Click the following link to reset your password: <a href="${resetLink}">${resetLink}</a>`,
     };
@@ -84,7 +84,7 @@ exports.forgotPass = async (req, res) => {
     });
   } catch (error) {
     console.error("Error:", error);
-    return res.status(500).json({ message: "Internal Server Error" });
+    throw new Error(ERROR_CODES.INTERNAL_SERVER_ERROR);
   }
 };
 
