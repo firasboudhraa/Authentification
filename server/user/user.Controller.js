@@ -49,7 +49,7 @@ exports.forgotPass = async (req, res) => {
     const user = await UserModel.findOne({ email: loginEmail });
 
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      throw new Error(ERROR_CODES.NOT_FOUND);
     }
 
     const transporter = nodemailer.createTransport({
@@ -60,7 +60,7 @@ exports.forgotPass = async (req, res) => {
       },
     });
 
-    const resetLink = "http://localhost:5000/resetPass";
+    const resetLink = "http://localhost:5000/reset-pass";
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
@@ -112,7 +112,7 @@ exports.resetPass = async (req, res) => {
     return res.status(200).json({ message: "Password reset successful." });
   } catch (error) {
     console.error("Error:", error);
-    return res.status(500).json({ message: "Internal Server Error" });
+    throw new Error(ERROR_CODES.INTERNAL_SERVER_ERROR);
   }
 };
 

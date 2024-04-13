@@ -5,11 +5,14 @@ const REGISTER_URL = "/user/sign-in-user";
 const FORGOT_Pass_URL = "/user/forgot-pass-user";
 
 const useSignInStore = create((set, get) => ({
-    loginEmail: '',
+    loginEmail: typeof window !== 'undefined' ? localStorage.getItem('loginEmail') || '' : '',
     loginPassword: '',
     loading: false,
     handleChangePassword: (value) => { set({ loginPassword: value }) },
-    handleChangeEmail: (value) => { set({ loginEmail: value }) },
+    handleChangeEmail: (value) => { 
+        set({ loginEmail: value });
+        localStorage.setItem('loginEmail', value);
+     },
     handleClickSignIn: async () => {
         try {
             set({ loading: true });
